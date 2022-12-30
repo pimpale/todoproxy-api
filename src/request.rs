@@ -1,17 +1,4 @@
-use derive_more::Display;
 use serde::{Deserialize, Serialize};
-
-#[derive(Clone, Debug, Serialize, Deserialize, Display)]
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
-pub enum AppError {
-    DecodeError,
-    InternalServerError,
-    Unauthorized,
-    BadRequest,
-    NotFound,
-    InvalidBase64,
-    Unknown,
-}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub enum OpKind {
@@ -39,6 +26,7 @@ pub enum OpKind {
     },
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct DoOpProps {
     pub api_key: String,
     pub op: OpKind,
