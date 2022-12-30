@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use derive_more::Display;
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Serialize, Deserialize, Display)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
@@ -18,8 +18,6 @@ impl std::error::Error for AppError {}
 #[serde(rename_all = "camelCase")]
 pub struct LiveTask {
     pub task_id: i64,
-    pub creation_time: i64,
-    pub creator_user_id: i64,
     pub value: String,
 }
 
@@ -27,14 +25,16 @@ pub struct LiveTask {
 #[serde(rename_all = "camelCase")]
 pub struct FinishedTask {
     pub finished_task_id: i64,
-    pub creation_time: i64,
-    pub creator_user_id: i64,
     pub value: String,
     pub status: super::TaskStatus,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub enum TaskUpdate {
+pub enum WebsocketServerUpdateMessage {
+    OverwriteState {
+        live: Vec<LiveTask>,
+        finished: Vec<FinishedTask>,
+    },
     LiveTaskInsNew {
         value: String,
         live_task_id: i64,
@@ -66,3 +66,11 @@ pub enum TaskUpdate {
     },
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Info {
+    pub service: String,
+    pub version_major: i64,
+    pub version_minor: i64,
+    pub version_rev: i64,
+}

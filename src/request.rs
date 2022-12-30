@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub enum OpKind {
+pub enum WebsocketClientOpMessage {
     LiveTaskInsNew {
         value: String,
         position: i64,
@@ -27,7 +27,6 @@ pub enum OpKind {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct DoOpProps {
+pub struct WebsocketClientInitMessage {
     pub api_key: String,
-    pub op: OpKind,
 }
