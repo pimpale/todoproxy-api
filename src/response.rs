@@ -31,14 +31,14 @@ pub struct FinishedTask {
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct ServerStateSnapshot {
-    live: Vec<LiveTask>,
-    finished: Vec<FinishedTask>,
+pub struct ServerStateCheckpoint {
+    pub live: Vec<LiveTask>,
+    pub finished: Vec<FinishedTask>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub enum WebsocketServerUpdateMessage {
-    OverwriteState(ServerStateSnapshot),
+    OverwriteState(ServerStateCheckpoint ),
     LiveTaskInsNew {
         value: String,
         live_task_id: i64,
