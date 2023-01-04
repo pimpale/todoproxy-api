@@ -42,7 +42,7 @@ pub enum WebsocketServerUpdateMessage {
     LiveTaskInsNew {
         value: String,
         live_task_id: i64,
-        position: i64,
+        position: usize,
     },
     LiveTaskInsRestore {
         finished_task_id: i64,
