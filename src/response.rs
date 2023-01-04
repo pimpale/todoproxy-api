@@ -1,3 +1,5 @@
+use std::collections::VecDeque;
+
 use derive_more::Display;
 use serde::{Deserialize, Serialize};
 
@@ -32,7 +34,7 @@ pub struct FinishedTask {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ServerStateCheckpoint {
-    pub live: Vec<LiveTask>,
+    pub live: VecDeque<LiveTask>,
     pub finished: Vec<FinishedTask>,
 }
 
