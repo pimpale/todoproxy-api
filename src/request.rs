@@ -7,21 +7,21 @@ pub enum WebsocketClientOpMessage {
         position: i64,
     },
     LiveTaskInsRestore {
-        finished_task_id: i64,
+        finished_task_id: String,
     },
     LiveTaskEdit {
-        live_task_id: i64,
+        live_task_id: String,
         value: String,
     },
     LiveTaskDel {
-        live_task_id: i64,
+        live_task_id: String,
     },
     LiveTaskDelIns {
-        live_task_id_del: i64,
-        live_task_id_ins: i64,
+        live_task_id_del: String,
+        live_task_id_ins: String,
     },
     FinishedTaskNew {
-        live_task_id: i64,
+        live_task_id: String,
         status: super::TaskStatus,
     },
 }
