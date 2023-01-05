@@ -6,4 +6,4 @@ pub struct WebsocketInitMessage {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct WebsocketOpMessage(super::WebsocketOp);
+pub struct WebsocketOpMessage(pub super::WebsocketOp);
