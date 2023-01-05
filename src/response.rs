@@ -15,9 +15,6 @@ pub enum AppError {
 impl std::error::Error for AppError {}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct WebsocketOpMessage(pub super::WebsocketOp);
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Info {
     pub service: String,

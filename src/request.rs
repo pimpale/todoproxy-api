@@ -4,6 +4,3 @@ use serde::{Deserialize, Serialize};
 pub struct WebsocketInitMessage {
     pub api_key: String,
 }
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct WebsocketOpMessage(pub super::WebsocketOp);
