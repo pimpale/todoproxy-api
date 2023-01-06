@@ -37,35 +37,35 @@ pub struct StateSnapshot {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
-pub enum WebsocketOp {
+pub enum WebsocketOpKind {
     OverwriteState(StateSnapshot),
-    LiveTaskInsNew {
+    InsLiveTask {
         value: String,
-        live_task_id: String,
+        id: String,
         position: usize,
     },
-    LiveTaskInsRestore {
-        finished_task_id: String,
+    RestoreFinishedTask {
+        id: String,
     },
-    LiveTaskEdit {
-        live_task_id: String,
+    EditLiveTask {
+        id: String,
         value: String,
     },
-    LiveTaskDel {
-        live_task_id: String,
+    DelLiveTask {
+        id: String,
     },
-    LiveTaskDelIns {
-        live_task_id_del: String,
-        live_task_id_ins: String,
+    MvLiveTask {
+        id_del: String,
+        id_ins: String,
     },
-    FinishedTaskPush {
-        finished_task_id: String,
-        value: String,
+    FinishLiveTask {
+        id: String,
         status: TaskStatus,
     },
-    FinishedTaskPushComplete {
-        live_task_id: String,
-        finished_task_id: String,
-        status: TaskStatus,
-    },
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct WebsocketOp {
+    alleged_time: i64,
+    kind: WebsocketOpKind,
 }
