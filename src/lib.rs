@@ -66,6 +66,6 @@ pub enum WebsocketOpKind {
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct WebsocketOp {
-    alleged_time: i64,
-    kind: WebsocketOpKind,
+    pub alleged_time: i64,
+    pub kind: WebsocketOpKind,
 }
