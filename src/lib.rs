@@ -42,7 +42,6 @@ pub enum WebsocketOpKind {
     InsLiveTask {
         value: String,
         id: String,
-        position: usize,
     },
     RestoreFinishedTask {
         id: String,
