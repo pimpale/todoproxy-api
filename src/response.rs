@@ -21,6 +21,7 @@ pub struct Info {
     pub version_major: i64,
     pub version_minor: i64,
     pub version_rev: i64,
-    pub site_external_url: String,
-    pub auth_service_external_url: String,
+    pub app_pub_origin: String,
+    pub auth_pub_api_href: String,
+    pub auth_authenticator_href: String,
 }
