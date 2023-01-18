@@ -33,7 +33,7 @@ pub struct FinishedTask {
 #[serde(rename_all = "camelCase")]
 pub struct StateSnapshot {
     pub live: VecDeque<LiveTask>,
-    pub finished: Vec<FinishedTask>,
+    pub finished: VecDeque<FinishedTask>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
