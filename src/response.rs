@@ -16,61 +16,12 @@ impl std::error::Error for AppError {}
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct LiveTask {
-    pub task_id: i64,
-    pub value: String,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct FinishedTask {
-    pub finished_task_id: i64,
-    pub value: String,
-    pub status: super::TaskStatus,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub enum WebsocketServerUpdateMessage {
-    OverwriteState {
-        live: Vec<LiveTask>,
-        finished: Vec<FinishedTask>,
-    },
-    LiveTaskInsNew {
-        value: String,
-        live_task_id: i64,
-        position: i64,
-    },
-    LiveTaskInsRestore {
-        finished_task_id: i64,
-    },
-    LiveTaskEdit {
-        live_task_id: i64,
-        value: String,
-    },
-    LiveTaskDel {
-        live_task_id: i64,
-    },
-    LiveTaskDelIns {
-        live_task_id_del: i64,
-        live_task_id_ins: i64,
-    },
-    FinishedTaskPush {
-        finished_task_id: i64,
-        value: String,
-        status: super::TaskStatus,
-    },
-    FinishedTaskPushComplete {
-        live_task_id: i64,
-        finished_task_id: i64,
-        status: super::TaskStatus,
-    },
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
 pub struct Info {
     pub service: String,
     pub version_major: i64,
     pub version_minor: i64,
     pub version_rev: i64,
+    pub app_pub_origin: String,
+    pub auth_pub_api_href: String,
+    pub auth_authenticator_href: String,
 }
