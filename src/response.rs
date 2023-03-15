@@ -25,3 +25,10 @@ pub struct Info {
     pub auth_pub_api_href: String,
     pub auth_authenticator_href: String,
 }
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct HabiticaIntegration {
+    integration_api_key: String,
+    integration_user_id: String,
+}
