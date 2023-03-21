@@ -29,6 +29,6 @@ pub struct Info {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct HabiticaIntegration {
-    integration_api_key: String,
-    integration_user_id: String,
+    pub integration_api_key: String,
+    pub integration_user_id: String,
 }
