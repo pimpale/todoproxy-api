@@ -57,6 +57,10 @@ pub enum WebsocketOpKind {
         id_del: String,
         id_ins: String,
     },
+    RevLiveTask {
+        id1: String,
+        id2: String,
+    },
     FinishLiveTask {
         id: String,
         status: TaskStatus,
