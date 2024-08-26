@@ -25,7 +25,7 @@ pub enum TaskStatus {
 pub struct LiveTask {
     pub id: String,
     pub value: String,
-    pub deadline: Optional<Deadline>,
+    pub deadline: Option<Deadline>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -49,7 +49,7 @@ pub enum WebsocketOpKind {
     InsLiveTask {
         id: String,
         value: String,
-        deadline: Optional<Deadline>,
+        deadline: Option<Deadline>,
     },
     RestoreFinishedTask {
         id: String,
@@ -57,7 +57,7 @@ pub enum WebsocketOpKind {
     EditLiveTask {
         id: String,
         value: String,
-        deadline: Optional<Deadline>,
+        deadline: Option<Deadline>,
     },
     DelLiveTask {
         id: String,
