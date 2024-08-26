@@ -19,6 +19,7 @@ pub enum TaskStatus {
 pub struct LiveTask {
     pub id: String,
     pub value: String,
+    pub deadline: Option<u64>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -37,10 +38,18 @@ pub struct StateSnapshot {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
+pub struct Deadline {
+    time: u64,
+    recurrent: bool,
+}
+
+
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub enum WebsocketOpKind {
     OverwriteState(StateSnapshot),
     InsLiveTask {
         value: String,
+        deadline: Option<Deadline>,
         id: String,
     },
     RestoreFinishedTask {
@@ -49,6 +58,7 @@ pub enum WebsocketOpKind {
     EditLiveTask {
         id: String,
         value: String,
+        deadline: Option<Deadline>,
     },
     DelLiveTask {
         id: String,
@@ -59,6 +69,7 @@ pub enum WebsocketOpKind {
     },
     FinishLiveTask {
         id: String,
+        new_id: String,
         status: TaskStatus,
     },
 }
