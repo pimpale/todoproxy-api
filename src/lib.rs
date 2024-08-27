@@ -7,12 +7,6 @@ use std::collections::VecDeque;
 use num_derive::FromPrimitive;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
-pub struct Deadline {
-    time: u64,
-    daily: bool,
-}
-
 #[derive(Clone, Debug, Serialize, Deserialize, FromPrimitive)]
 pub enum TaskStatus {
     Obsoleted,
@@ -25,7 +19,7 @@ pub enum TaskStatus {
 pub struct LiveTask {
     pub id: String,
     pub value: String,
-    pub deadline: Option<Deadline>,
+    pub managed: Option<String>
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -33,7 +27,7 @@ pub struct LiveTask {
 pub struct FinishedTask {
     pub id: String,
     pub value: String,
-    pub status: TaskStatus,
+    pub managed: Option<String>
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -49,7 +43,6 @@ pub enum WebsocketOpKind {
     InsLiveTask {
         id: String,
         value: String,
-        deadline: Option<Deadline>,
     },
     RestoreFinishedTask {
         id: String,
@@ -57,7 +50,6 @@ pub enum WebsocketOpKind {
     EditLiveTask {
         id: String,
         value: String,
-        deadline: Option<Deadline>,
     },
     DelLiveTask {
         id: String,
